@@ -5,10 +5,10 @@
          version="3.1">
     <servlet>
         <servlet-name>Servlet</servlet-name>
-        <servlet-class>com.java.CommissionEmployeeServlet</servlet-class>
+        <servlet-class>com.java.Servlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
-        <url-pattern></url-pattern>
+        <url-pattern>employee</url-pattern>
     </servlet-mapping>
 </web-app>
