@@ -1,25 +1,15 @@
 package com.java;
 
-public class Employee {
+public abstract class Employee {
     private final String firstName;
     private final String lastName;
     private final String socialSecurityNumber;
-    private double grossSales;
-    private double commissionRate;
 
-    public Employee(String firstName, String lastName, String socialSecurityNumber, double grossSales, double commissionRate)
+    public Employee(String firstName, String lastName, String socialSecurityNumber)
     {
-        if (grossSales < 0.0)
-            throw new IllegalArgumentException("Gross sales must be >= .");
-
-        if (commissionRate <= 0.0 || commissionRate >= 1.0)
-            throw new IllegalArgumentException("Commission rate must be > 0.0 and < 1.0");
-
         this.firstName = firstName;
         this.lastName = lastName;
         this.socialSecurityNumber = socialSecurityNumber;
-        this.grossSales = grossSales;
-        this.commissionRate = commissionRate;
     }
 
     public String getFirstName() {
@@ -34,42 +24,10 @@ public class Employee {
         return socialSecurityNumber;
     }
 
-    public double getGrossSales() {
-        return grossSales;
-    }
-
-    public double getCommissionRate() {
-        return commissionRate;
-    }
-
-    public void setCommissionRate(double commissionRate) {
-        if (commissionRate <= 0.0 || commissionRate >= 1.0)
-            throw new IllegalArgumentException("Commission rate must be > 0.0 and < 1.0");
-
-        this.commissionRate = commissionRate;
-    }
-
-    public void setGrossSales(double grossSales) {
-        if (grossSales < 0.0)
-            throw new IllegalArgumentException("Gross sales must be >= 0.0");
-
-        this.grossSales = grossSales;
-    }
-
-    public double earnings()
-    {
-        return commissionRate * grossSales;
-
-    }
-
-
     @Override
     public String toString() {
-        return String.format("%s: %s %s%n%s: %s%n%s: %.2f%n%s: %.2f",
-                "commission employee", firstName, lastName,
-                "social security number", socialSecurityNumber,
-                "gross sales", grossSales,
-                "commission rate", commissionRate);
+        return String.format("%s %s%nsocial security number: %s", getFirstName(), getLastName(), getSocialSecurityNumber());
     }
 
+    public abstract double earnings();
 }
